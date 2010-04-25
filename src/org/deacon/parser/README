@@ -1,0 +1,20 @@
+Command pattern README
+
+Deacon employs a GOF-style command pattern to parse and execute commands received from the Meteor server:
+
+The CLIENT creates ConcreteCommand objects and specifies their receivers.
+The CLIENT in Deacon is the Deacon class.
+
+The INVOKER stores the ConcreteCommand objects
+The INVOKER in Deacon is the DeaconService class.
+
+The CONCRETECOMMAND invokes operations on its receiver to carry out requests.
+The CONCRETECOMMANDs in Deacon are in the org.deacon.parser package and implement the Command interface.
+
+The RECEIVER carries out requests.
+The RECEIVER in Deacon varies depending on the command:
+	--> For process() commands from Meteor, the RECEIVER in Deacon is the DeaconResponse class.
+	--> For clearpoll() commands from Meteor, the RECEIVER in Deacon is the DeaconService class.
+	--> For ping() commands from Meteor, the RECEIVER in Deacon is the DeaconService class.
+	--> For eof() commands from Meteor, the RECEIVER in Deacon is the DeaconService class.
+	--> For reset() commands from Meteor, the RECEIVER in Deacon is the DeaconService class.
